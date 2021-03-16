@@ -57,7 +57,7 @@ footer {
     border-top: 1px solid lightgrey;
 }
 
-footer input {
+#description{
     flex: 1;
 }
 

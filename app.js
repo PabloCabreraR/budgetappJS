@@ -2,7 +2,10 @@
 const balanceElement = document.getElementById('balance');
 
 //Value Input
-const valueInputElement = document.querySelector('input');
+const valueInputElement = document.getElementById('value');
+
+//Description Input
+const descriptionInputElement = document.getElementById('description');
 
 //Income/Expense
 const selectElement = document.querySelector('select');
@@ -14,7 +17,7 @@ const additionButtonElement = document.querySelector('footer button');
 const entryListElements = document.querySelector('section ul');
 
 
-function addEntry (amount, operation){
+function addEntry (amount, operation, description){
     const listEntry = document.createElement('li');
     listEntry.classList.add(operation);
 
@@ -22,7 +25,7 @@ function addEntry (amount, operation){
     listEntryValue.innerText = amount+'$';
 
     const listEntryDescription = document.createElement('em');
-    listEntryDescription.innerText = 'Description';
+    listEntryDescription.innerText = description;
 
     const listEntryOperator = document.createElement('span');
     if (operation === 'income'){
@@ -62,11 +65,13 @@ function updateBalance(){
 
 
 additionButtonElement.onclick = function(){
+    const description = descriptionInputElement.value;
     const amount = valueInputElement.value;
     const operation = selectElement.value;
 
-    addEntry(amount, operation);
+    addEntry(amount, operation, description);
 
+    descriptionInputElement.value = '';
     valueInputElement.value = '';
 
     updateBalance();
